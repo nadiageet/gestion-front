@@ -1,0 +1,13 @@
+.element {
+  color: black;
+  transition: color 1s ease;
+}
+
+@keyframes changeColor {
+  to {
+    color: blue;
+  }
+}
+.blue {
+  animation: changeColor 1s ease infinite;
+}
