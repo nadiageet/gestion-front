@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Picture} from '../gallery/picture';
+import {timer} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-picture',
@@ -9,11 +11,13 @@ import {Picture} from '../gallery/picture';
 export class PictureComponent implements OnInit {
 
   @Input() picture: Picture;
-  test: number;
+  ready = false;
   constructor() { }
 
   ngOnInit() {
-    this.test = Math.random() * 10;
+    timer(this.picture.id * 1000)
+      .pipe(map(() => this.ready = true))
+      .subscribe();
   }
 
 }

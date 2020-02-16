@@ -4,7 +4,7 @@ import {switchMap} from 'rxjs/operators';
 
 export class GalleryGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return timer(3000)
+    return timer(0)
       .pipe(switchMap(() => of(true)));
   }
 

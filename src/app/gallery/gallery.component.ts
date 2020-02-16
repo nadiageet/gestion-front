@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Picture} from './picture';
 import {ActivatedRoute} from '@angular/router';
+import {GalleryResolver} from './gallery-resolver';
 
 @Component({
   selector: 'app-gallery',
@@ -22,4 +23,11 @@ export class GalleryComponent implements OnInit {
   ngOnInit() {
   }
 
+  refresh() {
+    this.pictures = GalleryResolver.loadPictures();
+  }
+
+  byId(index, item) {
+    return item.id;
+  }
 }

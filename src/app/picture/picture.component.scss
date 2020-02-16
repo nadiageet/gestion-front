@@ -1,13 +1,14 @@
 .element {
-  color: black;
-  transition: color 1s ease;
+  animation: translate 1s ease-out;
 }
 
-@keyframes changeColor {
-  to {
-    color: blue;
+@keyframes translate {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
   }
-}
-.blue {
-  animation: changeColor 1s ease infinite;
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

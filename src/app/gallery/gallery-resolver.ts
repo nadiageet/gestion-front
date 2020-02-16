@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 
 export class GalleryResolver implements Resolve<Picture[]> {
 
-  loadPictures(): Picture[] {
+  static loadPictures(): Picture[] {
     const pictures = [];
     for (let i = 1; i <= 10; ++i) {
       const picture = {
@@ -19,7 +19,7 @@ export class GalleryResolver implements Resolve<Picture[]> {
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Picture[]> | Promise<Picture[]> | Picture[] {
-    return this.loadPictures();
+    return GalleryResolver.loadPictures();
   }
 
 }

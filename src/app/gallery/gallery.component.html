@@ -1,4 +1,4 @@
-<button (click)="loadPictures()">rafraichir </button>
+<button (click)="refresh()">rafraichir </button>
 <div class="grid">
-    <app-picture *ngFor="let p of pictures" [picture]="p" ></app-picture>
+    <app-picture *ngFor="let p of pictures; trackBy: byId" [picture]="p" ></app-picture>
 </div>
