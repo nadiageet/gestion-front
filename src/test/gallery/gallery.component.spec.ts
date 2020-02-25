@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GalleryComponent } from '../../app/gallery/gallery.component';
+import {PictureComponent} from '../../app/picture/picture.component';
+import {ActivatedRoute} from '@angular/router';
+import {NO_ERRORS_SCHEMA} from '@angular/core';
+import {MockActivatedRoute} from './mock-activated-route';
 
 describe('GalleryComponent', () => {
   let component: GalleryComponent;
@@ -8,7 +12,14 @@ describe('GalleryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GalleryComponent ]
+      declarations: [ GalleryComponent, PictureComponent ],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useClass: MockActivatedRoute
+        }
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));

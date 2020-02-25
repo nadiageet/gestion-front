@@ -15,9 +15,8 @@ export class GalleryComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute) {
     activatedRoute.data.subscribe(data => {
-      this.pictures = data['pictures'];
+      this.pictures = data.pictures;
     });
-    // console.table(activatedRoute.snapshot.data);
   }
 
   ngOnInit() {
