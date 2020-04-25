@@ -1,2 +1,11 @@
-<app-us-form></app-us-form>
-<app-us-list></app-us-list>
+<app-us-form [formSubject]="formSubject"></app-us-form>
+
+<label for="maxPoints">Points max</label>
+<input [(ngModel)]="maxPoints"
+  id="maxPoints"
+       type="number">
+
+<app-us-list [usList]="usList"></app-us-list>
+
+
+nombre de points restants : {{remaining}}

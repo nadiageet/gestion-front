@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Us} from '../us';
 
 @Component({
   selector: 'app-us-list',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsListComponent implements OnInit {
 
+  @Input() usList: Us[] = [];
   constructor() { }
 
   ngOnInit() {

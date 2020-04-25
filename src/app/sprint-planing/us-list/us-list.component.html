@@ -1,1 +1,5 @@
-<p>us-list works!</p>
+<ul>
+  <li *ngFor="let us of usList" class="us" [ngClass]="{'taken': us.taken}">
+    {{ us.id }} - {{us.label}} ; points : {{us.points}}
+  </li>
+</ul>
