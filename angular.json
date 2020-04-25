@@ -122,6 +122,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "gallery"
+    }
+  },
+  "defaultProject": "gallery",
+  "cli": {
+    "analytics": false
+  }
 }
