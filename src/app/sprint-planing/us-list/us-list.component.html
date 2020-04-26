@@ -1,5 +1,27 @@
+<!--
 <ul>
   <li *ngFor="let us of usList" class="us" [ngClass]="{'taken': us.taken}">
     {{ us.id }} - {{us.label}} ; points : {{us.points}} ; value : {{us.value}}
   </li>
 </ul>
+-->
+
+
+<p-table [columns]="columns" [value]="usList" sortField="value" sortOrder="-1">
+  <ng-template pTemplate="header">
+    <tr>
+      <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+        {{col.header}}
+        <p-sortIcon [field]="col.field"></p-sortIcon>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-us>
+    <tr>
+      <td *ngFor="let col of columns">
+        {{us[col.field]}}
+      </td>
+    </tr>
+  </ng-template>
+
+</p-table>

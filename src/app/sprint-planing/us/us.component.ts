@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Subject, Subscription} from "rxjs";
 import {Us} from "../us";
+import {J} from "@angular/cdk/keycodes";
 
 @Component({
   selector: 'app-us',
@@ -13,7 +14,7 @@ export class UsComponent implements OnInit {
 
   usList: Us[] = [];
   maxPoints = 20;
-  remaining = this.maxPoints;
+  // remaining = this.maxPoints;
   private formSub: Subscription;
   private optimal: number;
 
@@ -29,45 +30,25 @@ export class UsComponent implements OnInit {
     this.formSub = this.formSubject.subscribe((us: Us) => {
       us.id = this.usList.length + 1;
       us.taken = false;
-      if (this.remaining >= us.points) {
-        this.remaining -= us.points;
-        us.taken = true;
         /*if (this.remaining === 0) {
           this.formSub.unsubscribe();
         }*/
-      }
+      // this.usList = [...this.usList, us];
       this.usList.push(us);
-      this.usList.sort((a, b) => b.value - a.value);
-      //  this.optimizeValue();
+      this.save();
+      this.optimizeValue();
     });
   }
 
   private insertData() {
-    this.formSubject.next({value: 10, label: 'A', points: 10} as Us);
-    this.formSubject.next({value: 12, label: 'A', points: 15} as Us);
-    this.formSubject.next({value: 7, label: 'A', points: 8} as Us);
-    this.optimizeValue();
+   /* this.formSubject.next({value: 10, label: 'A', points: 10} as Us);
+    this.formSubject.next({value: 12, label: 'B', points: 15} as Us);
+    this.formSubject.next({value: 7, label: 'C', points: 8} as Us);*/
+   this.load();
   }
 
-  /*
-
-
-  for j from 0 to W do:
-
-    m[0, j] := 0
-
-
-for i from 1 to n do:
-
-    for j from 0 to W do:
-
-        if w[i] > j then:
-
-            m[i, j] := m[i-1, j]
-
-        else:
-
-            m[i, j] := max(m[i-1, j], m[i-1, j-w[i]] + v[i])
+  /**
+   * compute the optimal value getting from us
    */
   private optimizeValue() {
     const n = this.usList.length;
@@ -87,9 +68,20 @@ for i from 1 to n do:
         }
       }
     }
-    console.table(dp);
     this.optimal = dp[n][this.maxPoints];
 
+  }
 
+  private sortByValue = (a, b) => b.value - a.value;
+
+  private save() {
+    localStorage.setItem('us', JSON.stringify(this.usList));
+  }
+
+  private load() {
+    const json = localStorage.getItem('us');
+    if (json) {
+      this.usList = JSON.parse(json);
+    }
   }
 }

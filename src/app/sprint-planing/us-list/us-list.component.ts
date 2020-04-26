@@ -9,9 +9,24 @@ import {Us} from '../us';
 export class UsListComponent implements OnInit {
 
   @Input() usList: Us[] = [];
+  columns: any[] = [];
   constructor() { }
 
   ngOnInit() {
+    this.columns = [
+      {
+        header: 'Libellé',
+        field: 'label'
+      },
+      {
+        header: 'points',
+        field: 'points'
+      },
+      {
+        header: 'valeur',
+        field: 'value'
+      }
+    ];
   }
 
 }

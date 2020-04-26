@@ -6,6 +6,7 @@ import {UsComponent} from './us/us.component';
 import {RouterModule} from '@angular/router';
 import {sprintPlaningRoutes} from './sprint-planing-routes';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {SharedModule} from "../shared/shared.module";
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
+    SharedModule,
     RouterModule.forChild(sprintPlaningRoutes)
   ],
   exports: [
