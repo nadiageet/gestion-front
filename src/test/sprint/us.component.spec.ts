@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UsComponent } from './us.component';
+import { UsComponent } from '../../app/sprint-planing/us/us.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {CommonModule} from "@angular/common";
 
 describe('UsComponent', () => {
   let component: UsComponent;
@@ -8,7 +10,8 @@ describe('UsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UsComponent ]
+      declarations: [ UsComponent ],
+      imports: [ReactiveFormsModule, FormsModule, CommonModule]
     })
     .compileComponents();
   }));

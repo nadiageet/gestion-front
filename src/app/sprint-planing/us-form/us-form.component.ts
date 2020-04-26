@@ -13,6 +13,7 @@ export class UsFormComponent implements OnInit {
   labelControl: FormControl;
   pointsControl: FormControl;
   @Input() formSubject: Subject;
+  valueControl: FormControl;
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -23,9 +24,11 @@ export class UsFormComponent implements OnInit {
   private buildForm() {
     this.labelControl = this.formBuilder.control('', [Validators.required, Validators.minLength(5)])
     this.pointsControl = this.formBuilder.control(1, [Validators.min(1), Validators.required], []);
+    this.valueControl = this.formBuilder.control(1, [Validators.min(1), Validators.required], []);
     this.form = this.formBuilder.group({
       label: this.labelControl,
-      points: this.pointsControl
+      points: this.pointsControl,
+      value: this.valueControl,
     });
   }
 
@@ -39,6 +42,8 @@ export class UsFormComponent implements OnInit {
     this.formSubject.next(us);
 
     this.form.reset();
+
     this.pointsControl.setValue(1);
+    this.valueControl.setValue(1);
   }
 }

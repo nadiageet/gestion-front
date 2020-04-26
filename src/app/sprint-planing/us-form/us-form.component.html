@@ -1,11 +1,15 @@
 <form [formGroup]="form" (ngSubmit)="submitForm()">
   <p>
     <label for="label">nom</label>
-    <input id="label" formControlName="label" type="text">
+    <input placeholder="entrer un nom" id="label" formControlName="label" type="text">
   <p class="error" *ngIf="labelControl.touched && labelControl.errors?.required">champs obligatoire</p>
   <p>
     <label for="points">points</label>
     <input id="points" formControlName="points" type="number">
+  </p>
+  <p>
+    <label for="value">value</label>
+    <input id="value" formControlName="value" type="number">
   </p>
   <button type="submit"> créer l'Us</button>
 </form>

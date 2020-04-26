@@ -4,5 +4,6 @@ export interface Us {
   points: number;
   id: number;
   taken: boolean;
+  value: number;
 
 }

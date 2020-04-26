@@ -2,6 +2,7 @@
 
 <label for="maxPoints">Points max</label>
 <input [(ngModel)]="maxPoints"
+       (change)="optimizeValue()"
   id="maxPoints"
        type="number">
 
@@ -9,3 +10,7 @@
 
 
 nombre de points restants : {{remaining}}
+
+<p>
+  valeur optimale = {{optimal}}
+</p>
